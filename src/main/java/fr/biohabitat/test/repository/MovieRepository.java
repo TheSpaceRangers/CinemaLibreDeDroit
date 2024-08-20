@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
     Page<Movie> findByTitleContaining(String title, Pageable pageable);
+    int countByTitleContaining(String title);
 }

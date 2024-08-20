@@ -32,4 +32,11 @@ public class MovieService {
         System.out.println(moviePage);
         return moviePage.getContent();
     }
+
+    public final int getTotalPages(String title, int size) {
+        int totalCount = movieRepository.countByTitleContaining(title);
+        return (int) Math.ceil((double) totalCount / size);
+    }
+
+
 }

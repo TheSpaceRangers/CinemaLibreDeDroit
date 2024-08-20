@@ -33,14 +33,13 @@ public class MovieController {
     }
 
     @GetMapping("/search")
-    public String searchMovie(@RequestParam String title, Model model) {
-        System.out.println(title);
-        List<Movie> movies = service.getByContainerTitle(title, 0, 20);
-        System.out.println(movies);
-        model.addAttribute("movies",     movies);
+    public String searchMovie(@RequestParam String title, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size, Model model) {
+        List<Movie> movies = service.getByContainerTitle(title, page, size);
+        int totalPages = service.getTotalPages(title, size);
+        model.addAttribute("movies", movies);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("currentPage", page);
         return "search";
     }
-
-
 
 }
