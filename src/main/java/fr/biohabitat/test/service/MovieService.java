@@ -38,5 +38,15 @@ public class MovieService {
         return (int) Math.ceil((double) totalCount / size);
     }
 
+    public void save(Movie movie) {
+        movieRepository.save(movie);
+    }
 
+    public final List<Movie> getByLike(int top) {
+        return movieRepository.findTopMoviesByLike(top);
+    }
+
+    public final List<Movie> getByDate(int top) {
+        return movieRepository.findTopMoviesByDate(top);
+    }
 }
