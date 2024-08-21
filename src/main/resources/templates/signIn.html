@@ -33,27 +33,11 @@
 </nav>
 
 <div class="d-flex justify-content-center flex-column py-4 mx-4">
-    <div>
-        <h2>Top Movies by Likes</h2>
-        <ul class="list-unstyled">
-            <li th:each="movie : ${moviesMoreLike}">
-                <a th:href="@{/movies/{id}(id=${movie.id_movies})}">
-                    <span th:text="${movie.title}"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <h2>Recent Movies</h2>
-        <ul class="list-unstyled">
-            <li th:each="movie : ${moviesRecent}">
-                <a th:href="@{/movies/{id}(id=${movie.id_movies})}">
-                    <span th:text="${movie.title}"></span>
-                </a>
-            </li>
-        </ul>
-
-    </div>
+    <form action="signIn" method="post">
+        <input type="text" name="email"/>
+        <input type="password" name="password"/>
+        <button type="submit">Se connecter</button>
+    </form>
 </div>
 
 </body>
